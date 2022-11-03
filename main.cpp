@@ -52,6 +52,44 @@ class Teacher: public Getdetails{
         }
 };
 
+class Research_scholar :  public Teacher{
+  private: 
+    char *guide;
+  
+  public: 
+    
+  virtual void displaydetails(){
+        Teacher::enterdetails();
+        Teacher::displaydetails();
+        cout << guide << endl;
+  }
+  void set_guide(string g){
+        int length=g.length();
+        guide=new char[length];
+        strcpy(guide,g.c_str());
+  }
+};
+
+class Research_alumni : public Research_scholar{
+    private:
+    int passing_year;
+    char *curr_inst;
+    
+    public:
+    void displaydetails(){
+        Research_scholar::displaydetails();
+        cout << passing_year << endl;
+        cout << curr_inst << endl;
+    }
+    void set_deets(int year, string ci){
+        int length=ci.length();
+        curr_inst=new char[length];
+        strcpy(curr_inst,ci.c_str());
+        passing_year = year;
+    }
+};
+
+
 int main()
 {
     Teacher a("ECE",3);
